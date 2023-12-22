@@ -2,12 +2,14 @@ let works = [];
 async function loadWorks() {
   const response = await fetch("http://localhost:5678/api/works");
   works = await response.json();
-  displayWorks();
+  displayWorks(works);
 }
 loadWorks();
 
-function displayWorks() {
-  works.forEach((work) => {
+function displayWorks(filterWorks) {
+  const gallery = document.querySelector(".gallery");
+  gallery.innerHTML="";
+  filterWorks.forEach((work) => {
     const figure = document.createElement("figure");
     const figcaption = document.createElement("figcaption");
     figcaption.innerHTML = work.title;
@@ -16,7 +18,6 @@ function displayWorks() {
     worksImage.alt = work.title;
     figure.appendChild(worksImage);
     figure.appendChild(figcaption);
-    const gallery = document.querySelector(".gallery");
     gallery.appendChild(figure);
   });
 }
@@ -29,28 +30,25 @@ async function loadCategories() {
 }
 loadCategories();
 
-function displaycategories() {
+const buttonFilter= document.querySelector(".buttonFilter");
+
+function displaycategories(){
+  const button= document.createElement("button");
+    button.innerHTML="Tous";
+    buttonFilter.appendChild(button); 
+    button.addEventListener("click", function(){
+      displayWorks(works);
+    })
   categories.forEach((category) => {
-    const categories = document.createElement("button-all");
-    categories.innerHTML= category.name;
-    const objets = document.createElement("button");
-    objets.textContent= 'Objets';
-    const appartements = document.createElement("button");
-    appartements.textContent= 'Appartements';
-    const hotelsRestaurants = document.createElement("button");
-    hotelsRestaurants.textContent= 'Hotels & Restaurants';
-    appartements.appendChild(hotelsRestaurants);
-    objets.appendChild(appartements);
-    categories.appendChild(objets);
-    const portfolio = document.querySelector("#portfolio h2");
-    portfolio.appendChild(categories);
+    const button= document.createElement("button");
+    button.innerHTML= category.name;
+    buttonFilter.appendChild(button); 
+    button.addEventListener("click", function(){
+      let objetsWork= works.filter((work)=> work.categoryId === category.id);
+      displayWorks(objetsWork);
+    })
   })
 };
 
-const filterObjets= document.querySelector("button");
-filterObjets.addEventListener("click", function(){
-if (works===objets)
-works=objets
-});
 
-let objetsWork= works.filter((work)=> work.category.name ==='objets');
+
