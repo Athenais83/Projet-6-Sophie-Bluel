@@ -1,7 +1,8 @@
 header {
 	display: flex;
 	justify-content: space-between;
-	margin: 50px 0
+	margin-left: 80px;
+    margin-right: 100px;
 }
 
 h1{
@@ -30,13 +31,73 @@ nav ul {
 	display: flex;
 	align-items: center;
 	list-style-type: none;
+	gap: 15px;
 
 }
 nav li {
-	padding: 0 10px;
-	font-size: 1.2em;
+	padding: 10px;
+	font-size: 16px;
+	font-family: 'Work Sans';
+	font-weight: 400;
 }
 
 li:hover {
-	color: #B1663C;
+	color: black;
+	font-weight: bold;
+}
+
+li img{
+	width: 19px;
+}
+
+.connexion{
+	display: flex;
+	flex-direction: column;
+	margin-top: 100px;
+}
+
+.log{
+	text-align: center;
+}
+
+form{
+	display: flex;
+	flex-direction: column;
+	align-self: center;
+}
+
+input{
+	width: 35%;
+	height: 51px;
+	color: black;
+	border: white;
+	box-shadow: 0px 4px 14px 0px rgba(0, 0, 0, 0.09);
+	padding-left: 300px;
+	margin-top: 5px;
+    margin-bottom: 25px;
+}
+
+label{
+	font-family: 'Work Sans';
+}
+
+button{
+	text-align: center;
+	border: #1D6154 solid 1px;
+	border-radius: 20px 20px 20px 20px;
+	justify-items: center;
+	background-color: #1D6154;
+	color: white;
+	font-family: Syne;
+	font-size: 18px;
+	margin: auto;
+	margin-top: 20px;
+	margin-bottom: 20px;
+	padding: 10px;
+    padding-left: 45px;
+    padding-right: 45px;
+}
+
+a{
+	text-align: center;
 }
